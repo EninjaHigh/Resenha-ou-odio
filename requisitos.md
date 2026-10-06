@@ -1,5 +1,6 @@
 # Resenha ou Ódio
 ## Objetivos
+Jogar uma moeda e definir um resultado à partir de uma chance de 50% vindo das faces dela, onde a cara = resenha; coroa = ódio
 
 ### Stack Tecnlógico
 - Backend: PHP estruturado com sessões nativas
