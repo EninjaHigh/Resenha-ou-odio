@@ -1,2 +1,2 @@
-# Resenha-ou-dio
+# Resenha-ou-odio
 Cara ou Coroa
