@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resenha ou Ódio - O Cara ou Coroa Supremo</title>
+  
+  <!-- Favicon / Emoji Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪙</text></svg>">
+  
+  <!-- Fontes do Google: Outfit, Poppins e Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Canvas para Confetes e Efeitos Especiais de Vitória -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Cabeçalho / Navbar Superior -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#home" class="brand-logo" title="Voltar para a página inicial">
+        <div class="brand-icon">🔥</div>
+        <span class="brand-text">Resenha ou Ódio</span>
+        <span class="brand-badge">3D</span>
+      </a>
+
+      <div class="header-actions">
+        <!-- Botão para Criar Moeda Personalizada -->
+        <button id="btn-open-custom-modal" class="nav-link-btn" title="Criar seu próprio cara ou coroa">
+          <span>✨</span>
+          <span>Criar Moeda</span>
+        </button>
+
+        <!-- Controle de Som / Áudio -->
+        <button id="btn-sound-toggle" class="btn-icon" aria-label="Alternar som" title="Ativar ou desativar efeitos sonoros">
+          🔊
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal Dinâmico (Telas SPA) -->
+  <main>
+
+    <!-- ====================================================================
+         TELA 1: PÁGINA INICIAL (HOME)
+         ==================================================================== -->
+    <section id="screen-home" class="screen home-screen active">
+      <div class="hero-content">
+        
+        <div class="tagline-pill">
+          <span>⚡</span>
+          <span>A decisão mais justa e divertida para qualquer dúvida</span>
+        </div>
+
+        <!-- TÍTULO EXIGIDO NOS REQUISITOS -->
+        <h1 class="hero-title">
+          <span class="title-glow">Resenha ou ódio</span>
+        </h1>
+
+        <p class="hero-description">
+          Precisa decidir quem paga a conta, quem escolhe o filme ou qual time manda no pedaço? Deixe a moeda decidir o seu destino!
+        </p>
+
+        <!-- MOEDA FLUTUANDO E GIRANDO COM DUAS FACES: CARA E COROA -->
+        <div class="home-coin-arena" title="Moeda 3D girando continuamente">
+          <div class="coin-aura"></div>
+          <div class="coin-floating-wrapper">
+            <div id="home-coin-3d" class="coin-3d coin-spinning-continuous">
+              
+              <!-- FACE 1: CARA (Conforme requisitos) -->
+              <div class="coin-face coin-face-front">
+                <div class="coin-inner-design">
+                  <div class="coin-icon">👑</div>
+                  <span class="coin-text-label">CARA</span>
+                  <span class="coin-subtext">Resenha</span>
+                </div>
+              </div>
+
+              <!-- FACE 2: COROA (Conforme requisitos) -->
+              <div class="coin-face coin-face-back">
+                <div class="coin-inner-design">
+                  <div class="coin-icon">💎</div>
+                  <span class="coin-text-label">COROA</span>
+                  <span class="coin-subtext">Ódio</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="coin-shadow"></div>
+        </div>
+
+        <!-- BOTÃO JOGAR (LOGO ABAIXO DA MOEDA) -->
+        <button id="btn-play-hero" class="btn-play-primary">
+          <span>Jogar</span>
+          <span class="btn-play-icon">🚀</span>
+        </button>
+
+        <!-- Destaques e Recursos do Site -->
+        <div class="home-features">
+          <div class="feature-chip">
+            <span class="chip-emoji">⚽</span>
+            <span>Clássicos do Futebol</span>
+          </div>
+          <div class="feature-chip">
+            <span class="chip-emoji">🎮</span>
+            <span>Moedas de Games Famosos</span>
+          </div>
+          <div class="feature-chip">
+            <span class="chip-emoji">🦸</span>
+            <span>Super-Heróis Épicos</span>
+          </div>
+          <div class="feature-chip">
+            <span class="chip-emoji">🌍</span>
+            <span>Rivalidades de Países</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TELA 2: PÁGINA DE SELEÇÃO DE DESIGNS DE MOEDAS
+         ==================================================================== -->
+    <section id="screen-selection" class="screen selection-screen">
+      <div class="selection-header">
+        <h2 class="selection-title">Escolha o Design da Moeda</h2>
+        <p class="selection-subtitle">
+          Selecione a moeda perfeita para o seu confronto: futebol, games, heróis ou crie a sua personalizada!
+        </p>
+      </div>
+
+      <!-- Barra de Pesquisa e Filtros por Categoria -->
+      <div class="selection-controls">
+        
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="coin-search-input" class="search-input" placeholder="Buscar por time, jogo, país ou herói..." autocomplete="off">
+        </div>
+
+        <div class="categories-filter-bar">
+          <button class="btn-filter active" data-category="todas">
+            <span>🌟</span>
+            <span>Todas as Moedas</span>
+          </button>
+          <button class="btn-filter" data-category="resenha">
+            <span>🔥</span>
+            <span>Resenha ou Ódio</span>
+          </button>
+          <button class="btn-filter" data-category="futebol">
+            <span>⚽</span>
+            <span>Times de Futebol</span>
+          </button>
+          <button class="btn-filter" data-category="jogos">
+            <span>🎮</span>
+            <span>Jogos & Games</span>
+          </button>
+          <button class="btn-filter" data-category="herois">
+            <span>🦸</span>
+            <span>Super-Heróis</span>
+          </button>
+          <button class="btn-filter" data-category="paises">
+            <span>🌍</span>
+            <span>Países & Rivalidades</span>
+          </button>
+          <button class="btn-filter" data-category="classica">
+            <span>👑</span>
+            <span>Cara ou Coroa Clássico</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Grid com os Cards das Moedas -->
+      <div id="coins-grid" class="coins-grid">
+        <!-- Renderizado dinamicamente pelo script.js -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TELA 3: PÁGINA DE RESULTADO / SORTEIO
+         ==================================================================== -->
+    <section id="screen-game" class="screen game-screen">
+      
+      <!-- Detalhes da Moeda Selecionada -->
+      <div class="game-header-info">
+        <div class="current-match-badge">
+          <span>🪙</span>
+          <span id="current-match-name">Flamengo vs Vasco</span>
+          <span class="match-category-tag" id="current-match-category">Futebol</span>
+        </div>
+      </div>
+
+      <!-- Palco Central com a Moeda 3D Selecionada -->
+      <div id="game-coin-stage" class="game-coin-stage">
+        
+        <!-- Overlay da Contagem Regressiva de Três Segundos (3, 2, 1) -->
+        <div id="countdown-overlay" class="countdown-overlay">
+          <div id="countdown-number" class="countdown-number">3</div>
+          <div class="countdown-status-text">Girando a moeda...</div>
+        </div>
+
+        <!-- Moeda 3D do Jogo com as faces dinâmicas -->
+        <div id="game-coin-3d" class="game-coin">
+          
+          <!-- Face A (Frontal) -->
+          <div id="game-face-front" class="coin-face coin-face-front">
+            <!-- Injetado dinamicamente via JS -->
+          </div>
+
+          <!-- Face B (Traseira) -->
+          <div id="game-face-back" class="coin-face coin-face-back">
+            <!-- Injetado dinamicamente via JS -->
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Exibição do Resultado (Aparece após desacelerar a moeda) -->
+      <div id="result-display-container" class="result-display-container">
+        <span class="result-header-callout">🎉 Resultado Oficial do Cara ou Coroa</span>
+        <h2 id="result-winner-title" class="result-winner-title">FLAMENGO!</h2>
+        <p id="result-verdict-quote" class="result-verdict-quote">O destino foi decidido com sucesso!</p>
+
+        <!-- Ações do Jogador -->
+        <div class="result-action-buttons">
+          <button id="btn-play-again" class="btn-play-again">
+            <span>🔄</span>
+            <span>Jogar Novamente</span>
+          </button>
+          
+          <button id="btn-change-coin" class="btn-change-coin">
+            <span>🎨</span>
+            <span>Trocar Moeda</span>
+          </button>
+
+          <button id="btn-back-home" class="btn-back-home">
+            <span>🏠</span>
+            <span>Início</span>
+          </button>
+        </div>
+
+        <!-- Placar da Sessão para esse duelo -->
+        <div class="session-scoreboard">
+          <div class="score-item">
+            <span class="score-label" id="score-label-a">Opção A</span>
+            <span class="score-value" id="score-value-a">0</span>
+          </div>
+
+          <div class="score-divider"></div>
+
+          <div class="score-item">
+            <span class="score-label" id="score-label-b">Opção B</span>
+            <span class="score-value" id="score-value-b">0</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       MODAL: CRIAR CARA OU COROA PERSONALIZADO
+       ==================================================================== -->
+  <div id="modal-custom-coin" class="modal-backdrop">
+    <div class="modal-content">
+      <button id="btn-close-custom-modal" class="modal-close-btn" aria-label="Fechar">✕</button>
+      
+      <h3 class="modal-title">✨ Criar Moeda Personalizada</h3>
+      <p class="modal-description">
+        Digite as duas opções que você quer sortear (ex: Pizza vs Sushi, Praia vs Cinema, Estudar vs Dormir):
+      </p>
+
+      <form id="custom-coin-form">
+        <div class="custom-form-group">
+          <label for="custom-duel-name">Nome do Duelo / Pergunta</label>
+          <input type="text" id="custom-duel-name" placeholder="Ex: O que vamos jantar hoje?" required maxlength="40">
+        </div>
+
+        <div class="custom-form-group">
+          <label for="custom-side-a">Lado A (Cara / Resenha)</label>
+          <input type="text" id="custom-side-a" placeholder="Ex: Pizza" required maxlength="20">
+        </div>
+
+        <div class="custom-form-group">
+          <label for="custom-side-b">Lado B (Coroa / Ódio)</label>
+          <input type="text" id="custom-side-b" placeholder="Ex: Hambúrguer" required maxlength="20">
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn-modal-submit">
+            <span>Lançar Moeda Criada</span>
+            <span>🪙</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p><strong>Resenha ou Ódio</strong> &bull; Cara ou Coroa Online 3D &bull; Solução Definitiva para Decisões</p>
+      <p class="footer-quote">"Na dúvida, jogue a moeda para cima. Seja resenha ou ódio, o destino nunca erra!" 🔥</p>
+    </div>
+  </footer>
+
+  <!-- Script JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

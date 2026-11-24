@@ -1,0 +1,1390 @@
+/* ==========================================================================
+   RESENHA OU ÓDIO - ESTILOS PRINCIPAIS
+   Degradê de cores quentes, Animações 3D de Moeda, Design Moderno & Responsivo
+   ========================================================================== */
+
+:root {
+  /* Paleta de Cores Quentes */
+  --bg-dark-1: #150604;
+  --bg-dark-2: #240a06;
+  --bg-dark-3: #3b1008;
+  
+  --warm-red: #e61c24;
+  --warm-crimson: #c4121a;
+  --warm-orange: #ff5722;
+  --warm-amber: #ff8c00;
+  --warm-gold: #ffb703;
+  --warm-yellow: #ffd166;
+  --warm-cream: #fff3e6;
+
+  /* Gradientes Quentes Principais */
+  --gradient-bg: radial-gradient(circle at 50% 15%, #421008 0%, #220804 55%, #120302 100%);
+  --gradient-fire: linear-gradient(135deg, #ff3d00 0%, #ff7a00 50%, #ffb703 100%);
+  --gradient-hot: linear-gradient(135deg, #d90429 0%, #ef233c 40%, #ff7a00 100%);
+  --gradient-gold: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #fff2a1 80%, #b8860b 100%);
+  --gradient-silver: linear-gradient(135deg, #8a9ba8 0%, #cfd8dc 50%, #ffffff 80%, #78909c 100%);
+  --gradient-dark-glass: rgba(28, 8, 5, 0.72);
+  --gradient-glass-border: linear-gradient(135deg, rgba(255, 140, 0, 0.45), rgba(230, 28, 36, 0.15));
+
+  /* Efeitos e Sombras */
+  --glow-warm: 0 0 25px rgba(255, 87, 34, 0.45);
+  --glow-gold: 0 0 30px rgba(255, 183, 3, 0.55);
+  --glow-intense: 0 0 45px rgba(255, 61, 0, 0.7);
+  --shadow-box: 0 16px 36px rgba(0, 0, 0, 0.6);
+  --shadow-coin: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 122, 0, 0.35);
+
+  /* Fontes */
+  --font-heading: 'Outfit', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Transições */
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset Global */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark-1);
+  background-image: var(--gradient-bg);
+  background-attachment: fixed;
+  color: var(--warm-cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Partículas e Brilhos de Fundo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 87, 34, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 183, 3, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(230, 28, 36, 0.18) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Canvas para Confetes e Efeitos */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Navbar / Cabeçalho Superior */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(21, 6, 4, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 122, 0, 0.22);
+  padding: 0.9rem 1.5rem;
+  transition: var(--transition-smooth);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--warm-cream);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--gradient-fire);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(255, 87, 34, 0.6);
+  font-size: 1rem;
+}
+
+.brand-text {
+  background: linear-gradient(135deg, #ffffff 20%, #ffd166 60%, #ff5722 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(255, 87, 34, 0.25);
+  color: #ff9e80;
+  border: 1px solid rgba(255, 87, 34, 0.4);
+  padding: 2px 7px;
+  border-radius: 20px;
+  margin-left: 4px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-icon {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 140, 0, 0.25);
+  color: var(--warm-cream);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-size: 1.1rem;
+}
+
+.btn-icon:hover {
+  background: rgba(255, 140, 0, 0.2);
+  border-color: var(--warm-amber);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+}
+
+.nav-link-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 183, 3, 0.4);
+  color: var(--warm-yellow);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-smooth);
+}
+
+.nav-link-btn:hover {
+  background: rgba(255, 183, 3, 0.15);
+  border-color: var(--warm-gold);
+  transform: translateY(-2px);
+}
+
+/* Container Principal e Telas */
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  width: 100%;
+  flex: 1;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   TELA 1: PÁGINA INICIAL (HOME)
+   ========================================================================== */
+.home-screen {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem 4rem;
+  min-height: calc(100vh - 75px);
+}
+
+.hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tagline-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 87, 34, 0.15);
+  border: 1px solid rgba(255, 122, 0, 0.35);
+  color: var(--warm-yellow);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 1.1rem;
+  border-radius: 30px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.title-glow {
+  background: linear-gradient(135deg, #ffffff 0%, #ffd166 30%, #ff7a00 70%, #ff1744 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 25px rgba(255, 87, 34, 0.4));
+  display: inline-block;
+}
+
+.hero-description {
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  color: #ffccbc;
+  line-height: 1.6;
+  max-width: 580px;
+  margin-bottom: 2.2rem;
+  font-weight: 400;
+}
+
+/* ARENA DA MOEDA FLUTUANTE E GIRANDO NA HOME */
+.home-coin-arena {
+  margin: 1.8rem 0 3rem;
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Aura e Sombra Dinâmica Embaixo da Moeda */
+.coin-aura {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.35) 0%, rgba(230, 28, 36, 0.15) 45%, transparent 70%);
+  filter: blur(25px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseAura 4s ease-in-out infinite;
+}
+
+.coin-shadow {
+  position: absolute;
+  bottom: -40px;
+  width: 160px;
+  height: 26px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, transparent 75%);
+  border-radius: 50%;
+  filter: blur(6px);
+  animation: shadowFloat 3.5s ease-in-out infinite;
+}
+
+/* Wrapper Flutuante (Eixo Y) */
+.coin-floating-wrapper {
+  animation: coinFloat 3.5s ease-in-out infinite;
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 1;
+}
+
+/* Elemento 3D da Moeda Girando Continuamente */
+.coin-3d {
+  width: 210px;
+  height: 210px;
+  position: relative;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s linear;
+}
+
+.coin-spinning-continuous {
+  animation: continuousSpinY 5s linear infinite;
+}
+
+/* Faces da Moeda */
+.coin-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 0 0 7px rgba(255, 235, 59, 0.4),
+    inset 0 0 20px rgba(0, 0, 0, 0.6),
+    0 12px 28px rgba(0, 0, 0, 0.5);
+  border: 5px solid #d4af37;
+  overflow: hidden;
+}
+
+/* Face Frontal (CARA) */
+.coin-face-front {
+  transform: rotateY(0deg) translateZ(8px);
+  background: radial-gradient(circle at 35% 35%, #ffd54f 0%, #ffb300 50%, #ff8f00 80%, #b26a00 100%);
+  color: #3e2723;
+}
+
+/* Face Traseira (COROA) */
+.coin-face-back {
+  transform: rotateY(180deg) translateZ(8px);
+  background: radial-gradient(circle at 35% 35%, #ffe082 0%, #ffca28 50%, #ffa000 80%, #c47c00 100%);
+  color: #3e2723;
+}
+
+/* Detalhes de Relevo Metálico e Textura da Moeda */
+.coin-face::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 2px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.coin-face::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+/* Borda Cilíndrica Simulando Espessura 3D */
+.coin-edge-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+/* Conteúdo interno da Face */
+.coin-inner-design {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.coin-icon {
+  font-size: 3.4rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  line-height: 1;
+}
+
+.coin-text-label {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2e1c0c;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6), 0 -1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.coin-subtext {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #5d4037;
+  opacity: 0.85;
+}
+
+/* BOTÃO JOGAR (LOGO ABAIXO DA MOEDA) */
+.btn-play-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  background: var(--gradient-fire);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1.15rem 3.4rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 
+    0 10px 25px rgba(255, 61, 0, 0.5),
+    0 0 35px rgba(255, 140, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-bounce);
+  text-decoration: none;
+}
+
+.btn-play-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-play-primary:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 
+    0 16px 35px rgba(255, 61, 0, 0.65),
+    0 0 50px rgba(255, 183, 3, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.btn-play-primary:hover::before {
+  left: 100%;
+}
+
+.btn-play-primary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-play-icon {
+  font-size: 1.35rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-play-primary:hover .btn-play-icon {
+  transform: rotate(45deg) scale(1.2);
+}
+
+/* Destaques Rápido / Recursos */
+.home-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  max-width: 800px;
+}
+
+.feature-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(36, 10, 6, 0.65);
+  border: 1px solid rgba(255, 122, 0, 0.25);
+  padding: 0.65rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  color: var(--warm-cream);
+  backdrop-filter: blur(8px);
+}
+
+.feature-chip span.chip-emoji {
+  font-size: 1.15rem;
+}
+
+/* ==========================================================================
+   TELA 2: PÁGINA DE SELEÇÃO DE DESIGNS DE MOEDAS
+   ========================================================================== */
+.selection-screen {
+  padding: 2rem 1.5rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.selection-header {
+  text-align: center;
+  margin-bottom: 2.2rem;
+}
+
+.selection-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+  background: linear-gradient(135deg, #ffffff 10%, #ffd166 50%, #ff7a00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.selection-subtitle {
+  color: #ffab91;
+  font-size: 1.05rem;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Barra de Filtros e Pesquisa */
+.selection-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  background: rgba(28, 8, 5, 0.85);
+  border: 1px solid rgba(255, 140, 0, 0.35);
+  border-radius: 30px;
+  padding: 0.85rem 1.2rem 0.85rem 2.8rem;
+  color: var(--warm-cream);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.search-input:focus {
+  border-color: var(--warm-gold);
+  box-shadow: 0 0 15px rgba(255, 183, 3, 0.35);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff8a65;
+  font-size: 1rem;
+}
+
+/* Abas de Categorias */
+.categories-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.btn-filter {
+  background: rgba(45, 12, 8, 0.6);
+  border: 1px solid rgba(255, 122, 0, 0.25);
+  color: #ffccbc;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  border-radius: 25px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-smooth);
+}
+
+.btn-filter:hover {
+  background: rgba(255, 87, 34, 0.2);
+  border-color: var(--warm-orange);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-filter.active {
+  background: var(--gradient-fire);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(255, 61, 0, 0.45);
+}
+
+/* Grid de Cards de Moedas */
+.coins-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.8rem;
+}
+
+/* Card Individual da Moeda */
+.coin-card {
+  background: rgba(30, 9, 6, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 140, 0, 0.28);
+  border-radius: 20px;
+  padding: 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.coin-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-fire);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.coin-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--warm-gold);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 140, 0, 0.25);
+}
+
+.coin-card:hover::before {
+  opacity: 1;
+}
+
+.card-category-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(255, 87, 34, 0.18);
+  border: 1px solid rgba(255, 87, 34, 0.35);
+  color: #ffab91;
+  padding: 3px 10px;
+  border-radius: 15px;
+  margin-bottom: 0.8rem;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.card-subtitle {
+  font-size: 0.82rem;
+  color: #ffab91;
+  margin-bottom: 1.3rem;
+}
+
+/* Área de Pré-Visualização das Duas Faces */
+.card-preview-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  margin-bottom: 1.4rem;
+  perspective: 800px;
+}
+
+.preview-face-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.mini-face {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  border: 3px solid #d4af37;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-bounce);
+}
+
+.mini-face svg, .mini-face img, .mini-face .face-symbol {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.coin-card:hover .mini-face {
+  transform: scale(1.08) rotate(5deg);
+}
+
+.preview-vs-divider {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--warm-yellow);
+  opacity: 0.75;
+}
+
+.preview-face-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffccbc;
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botão Selecionar e Jogar dentro do Card */
+.btn-select-coin {
+  width: 100%;
+  margin-top: auto;
+  background: rgba(255, 87, 34, 0.15);
+  border: 1px solid rgba(255, 140, 0, 0.45);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+}
+
+.coin-card:hover .btn-select-coin {
+  background: var(--gradient-fire);
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.45);
+}
+
+.btn-select-coin:hover {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   TELA 3: PÁGINA DE RESULTADO / SORTEIO
+   ========================================================================== */
+.game-screen {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem 4rem;
+  min-height: calc(100vh - 75px);
+  position: relative;
+}
+
+.game-header-info {
+  margin-bottom: 1.5rem;
+}
+
+.current-match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(45, 12, 8, 0.75);
+  border: 1px solid rgba(255, 140, 0, 0.35);
+  color: var(--warm-yellow);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.5rem 1.3rem;
+  border-radius: 30px;
+  margin-bottom: 0.5rem;
+}
+
+.match-category-tag {
+  color: #ff8a65;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Palco Central do Sorteio 3D */
+.game-coin-stage {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 450px;
+  height: 320px;
+  margin: 1rem auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Moeda no Jogo de Tamanho Maior */
+.game-coin {
+  width: 240px;
+  height: 240px;
+  position: relative;
+  transform-style: preserve-3d;
+  user-select: none;
+  transition: transform 0.1s linear;
+}
+
+/* Contagem Regressiva de 3 Segundos */
+.countdown-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.countdown-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.countdown-number {
+  font-family: var(--font-heading);
+  font-size: 7.5rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffffff 0%, #ffd166 40%, #ff5722 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(255, 87, 34, 0.85));
+  animation: countdownPulse 1s ease-in-out infinite;
+}
+
+.countdown-status-text {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--warm-yellow);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  margin-top: 0.4rem;
+}
+
+/* ÁREA DE RESULTADO (Aparece após o sorteio) */
+.result-display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.9) translateY(15px);
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 600px;
+  width: 100%;
+}
+
+.result-display-container.revealed {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.result-header-callout {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--warm-yellow);
+  margin-bottom: 0.4rem;
+}
+
+.result-winner-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+  background: var(--gradient-fire);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255, 87, 34, 0.5));
+}
+
+.result-verdict-quote {
+  font-size: 1.1rem;
+  color: #ffccbc;
+  margin-bottom: 1.8rem;
+  font-weight: 500;
+}
+
+/* Botões de Ação na Tela de Resultado */
+.result-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.btn-play-again {
+  background: var(--gradient-fire);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.95rem 2.2rem;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  box-shadow: 0 8px 25px rgba(255, 61, 0, 0.45);
+  transition: var(--transition-bounce);
+}
+
+.btn-play-again:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 12px 30px rgba(255, 61, 0, 0.6);
+}
+
+.btn-change-coin, .btn-back-home {
+  background: rgba(45, 12, 8, 0.7);
+  border: 1px solid rgba(255, 140, 0, 0.35);
+  color: #ffccbc;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.95rem 1.6rem;
+  border-radius: 40px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+}
+
+.btn-change-coin:hover, .btn-back-home:hover {
+  background: rgba(255, 140, 0, 0.2);
+  border-color: var(--warm-gold);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Placar de Vitórias da Sessão */
+.session-scoreboard {
+  background: rgba(28, 8, 5, 0.7);
+  border: 1px solid rgba(255, 140, 0, 0.25);
+  border-radius: 16px;
+  padding: 1rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  backdrop-filter: blur(8px);
+}
+
+.score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.score-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ff8a65;
+  letter-spacing: 0.05em;
+}
+
+.score-value {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.score-divider {
+  width: 1px;
+  height: 35px;
+  background: rgba(255, 140, 0, 0.25);
+}
+
+/* ==========================================================================
+   MODAL: CRIAR MOEDA PERSONALIZADA
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 2, 2, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-backdrop.active {
+  display: flex;
+}
+
+.modal-content {
+  background: rgba(30, 9, 6, 0.95);
+  border: 1px solid rgba(255, 140, 0, 0.35);
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: var(--shadow-box), var(--glow-warm);
+  position: relative;
+  animation: modalPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: transparent;
+  border: none;
+  color: #ff8a65;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.modal-close-btn:hover {
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.modal-description {
+  font-size: 0.88rem;
+  color: #ffab91;
+  margin-bottom: 1.5rem;
+}
+
+.custom-form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.custom-form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--warm-yellow);
+  margin-bottom: 0.4rem;
+}
+
+.custom-form-group input {
+  width: 100%;
+  background: rgba(18, 4, 3, 0.8);
+  border: 1px solid rgba(255, 140, 0, 0.3);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: var(--warm-cream);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.custom-form-group input:focus {
+  border-color: var(--warm-gold);
+  box-shadow: 0 0 12px rgba(255, 183, 3, 0.3);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.btn-modal-submit {
+  flex: 1;
+  background: var(--gradient-fire);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 61, 0, 0.45);
+  transition: var(--transition-smooth);
+}
+
+.btn-modal-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 61, 0, 0.6);
+}
+
+/* Rodapé */
+.site-footer {
+  background: rgba(18, 4, 3, 0.85);
+  border-top: 1px solid rgba(255, 122, 0, 0.18);
+  padding: 1.6rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #ffab91;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-quote {
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES KEYFRAMES
+   ========================================================================== */
+
+/* Flutuação Suave da Moeda */
+@keyframes coinFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Sombra Flutuante Acompanhando a Moeda */
+@keyframes shadowFloat {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(0.75);
+    opacity: 0.3;
+  }
+}
+
+/* Rotação Contínua 3D no Eixo Y */
+@keyframes continuousSpinY {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Pulsação da Aura Brilhante */
+@keyframes pulseAura {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.95;
+  }
+}
+
+/* Pulso da Contagem Regressiva (3, 2, 1) */
+@keyframes countdownPulse {
+  0% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.96);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
+
+/* Animação do Modal Pop */
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Tremor de Impacto na Aterrissagem */
+@keyframes screenShake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, -3px); }
+  80% { transform: translate(2px, 2px); }
+}
+
+.shake {
+  animation: screenShake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0.8rem 1rem;
+  }
+
+  .home-screen {
+    padding: 2rem 1rem 3.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.7rem;
+  }
+
+  .coin-3d {
+    width: 175px;
+    height: 175px;
+  }
+
+  .coin-icon {
+    font-size: 2.8rem;
+  }
+
+  .coin-text-label {
+    font-size: 1.3rem;
+  }
+
+  .btn-play-primary {
+    font-size: 1.25rem;
+    padding: 1rem 2.6rem;
+  }
+
+  .game-coin {
+    width: 190px;
+    height: 190px;
+  }
+
+  .countdown-number {
+    font-size: 5.5rem;
+  }
+
+  .result-winner-title {
+    font-size: 2.2rem;
+  }
+
+  .result-action-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .btn-play-again, .btn-change-coin, .btn-back-home {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-text {
+    font-size: 1.15rem;
+  }
+  
+  .brand-badge {
+    display: none;
+  }
+  
+  .coins-grid {
+    grid-template-columns: 1fr;
+  }
+}
